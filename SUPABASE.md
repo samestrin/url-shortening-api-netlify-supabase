@@ -4,13 +4,13 @@
 
 Setting up Supabase for your project involves a few key steps, from creating an account to initializing your database and integrating it with your application. Here’s a detailed walkthrough:
 
-Sign Up and Create a New Project:
+**Sign Up and Create a New Project**:
 
 Visit [Supabase](https://supabase.io/) and sign up for a new account if you don't already have one.
 
 Once logged in, create a new project by specifying a project name, database password, and the region closest to your users to minimize latency.
 
-Project Setup:
+**Project Setup**:
 
 After your project is created, which might take a few minutes, you will be redirected to the project dashboard.
 
@@ -28,4 +28,6 @@ CREATE TABLE urls (
 );
 ```
 
-Row Level Security (RLS): Enable RLS for your tables to ensure that your data is secure and accessible only according to your specified policies.
+**Row Level Security (RLS)**:
+
+Enable RLS for your tables to ensure that your data is secure and accessible only according to your specified policies.
