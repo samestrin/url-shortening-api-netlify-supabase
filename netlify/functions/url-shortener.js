@@ -17,7 +17,7 @@ exports.handler = async (event) => {
   if (event.httpMethod === "POST" && event.path === "/shorten") {
     const { url } = JSON.parse(event.body);
     // Generate a short URL (you can use a library or implement your own logic)
-    const shortUrl = generateShortUrl();
+    const shortUrl = generateShortUrl(url);
 
     // Store the URL in Supabase
     const { data, error } = await supabase
@@ -77,6 +77,51 @@ async function generateShortUrl() {
     if (error) {
       console.error("Error checking for collision:", error);
       //throw error;
+    }
+
+    // If no data is returned, it means the short URL is unique
+    isCollision = !!data;
+  }
+
+  return shortUrl;
+}
+async function generateShortUrl(longUrl) {
+  let shortUrl;
+
+  // Check if the long URL already exists in the database
+  const { data, error } = await supabase
+    .from("urls")
+    .select("short_url")
+    .eq("long_url", longUrl)
+    .single();
+
+  if (error) {
+    console.error("Error checking for existing long URL:", error);
+    throw error;
+  }
+
+  // If a matching long URL is found, return its associated short URL
+  if (data && data.short_url) {
+    return data.short_url;
+  }
+
+  // If no matching long URL found, generate a new short URL
+  let isCollision = true;
+
+  while (isCollision) {
+    // Generate a unique 7-character short ID using shortid
+    shortUrl = shortid.generate().slice(0, 7);
+
+    // Check if the generated short URL already exists in the database
+    const { data, error } = await supabase
+      .from("urls")
+      .select("short_url")
+      .eq("short_url", shortUrl)
+      .single();
+
+    if (error) {
+      console.error("Error checking for collision:", error);
+      throw error;
     }
 
     // If no data is returned, it means the short URL is unique
