@@ -1,14 +1,17 @@
-[build]
-  functions = "netlify/functions"
-
 [[redirects]]
   from = "/shorten"
   to = "/.netlify/functions/url-shortener.js"
   status = 200
   methods = ["POST"]
-  
+
 [[redirects]]
   from = "/"
-  to = "/.netlify/functions/url-shortener.js"
+  to = "/index.html"  # Redirect root URL to index.html
+  status = 200
+  methods = ["GET"]
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/url-shortener.js/:splat"
   status = 200
   methods = ["GET"]
