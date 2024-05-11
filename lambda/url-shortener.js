@@ -23,8 +23,8 @@ shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for bet
 
 const headers = {
   "Access-Control-Allow-Origin": "*", // Allows all domains
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "*",
+  "Access-Control-Allow-Headers": "*",
   "Access-Control-Max-Age": "86400",
 };
 

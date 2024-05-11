@@ -5,14 +5,12 @@
   from = "/shorten"
   to = "/.netlify/functions/url-shortener"
   status = 200
-  headers = { Access-Control-Allow-Origin = "*" }
   methods = ["POST"]
 
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/url-shortener/:splat"
   status = 200
-  headers = { Access-Control-Allow-Origin = "*" }
   methods = ["GET"]
 
 [[redirects]]
@@ -20,8 +18,3 @@
   to = "/index.html"  # Redirect root URL to index.html
   status = 200
   methods = ["GET"]
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
