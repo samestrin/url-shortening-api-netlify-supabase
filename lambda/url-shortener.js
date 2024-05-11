@@ -28,7 +28,7 @@ exports.handler = async (event) => {
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
     };
-
+    console.log(event.httpMethod);
     // Handle OPTIONS request for preflight checks (important for CORS)
     if (event.httpMethod === "OPTIONS") {
       return {
