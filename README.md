@@ -60,6 +60,10 @@ Shorten a long URL and return the shortened URL.
 
 - `url`: The URL to be shortened.
 
+#### **Example Usage**
+
+Use a tool like Postman or curl to make a request:
+
 ```bash
 curl -X POST \
   https://localhost/shorten \
@@ -80,6 +84,14 @@ The server responds with:
 Retrieve the original URL from a shortened URL, e.g. `/lqywv6P`.
 
 This endpoint is accessed by navigating directly to the shortened URL.
+
+#### **Example Usage**
+
+Use curl to make a request:
+
+```bash
+curl http://localhost/[shortId]
+```
 
 ### **CORS Pre-flight Request**
 
