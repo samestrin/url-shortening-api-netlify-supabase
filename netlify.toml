@@ -1,6 +1,11 @@
 [build]
   functions = "built-lambda"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
 [[redirects]]
   from = "/shorten"
   to = "/.netlify/functions/url-shortener"
