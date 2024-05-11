@@ -63,7 +63,7 @@ Setup Your Supabase Database: Create a new project with a `urls` table for stora
 
 Deploy: Deploy to Netlify.
 
-Configure Environment Variables: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: `https://frwrd.ing/`).
+Configure Environment Variables: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: https://frwrd.ing/).
 
 Test: Visit the root of your deployment. You should be greeted with "Nothing to see here.".
 
