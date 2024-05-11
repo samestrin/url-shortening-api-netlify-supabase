@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "cd netlify/functions && npm i",
+    "prebuild": "cp package* netlify/functions && cd netlify/functions && npm i --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
