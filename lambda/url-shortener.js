@@ -20,7 +20,6 @@ shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for bet
 
 exports.handler = async (event) => {
   try {
-    console.log(event);
     if (event.httpMethod === "POST" && event.path === "/shorten") {
       if (!event.body) {
         return {
