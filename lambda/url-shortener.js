@@ -13,7 +13,7 @@ const shortid = require("shortid");
 const validator = require("validator");
 
 // Configure URL Base
-const urlBase = process.env.URL_BASE;
+const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 
 // Configure shortid to generate 7-character IDs
 shortid.characters(
