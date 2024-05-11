@@ -1,21 +1,30 @@
 {
   "name": "url-shortening-api-netlify-supabase",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "functions/url-shortener/index.js",
   "scripts": {
     "build:lambda": "netlify-lambda build lambda",
     "serve:lambda": "netlify-lambda serve lambda",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "netlify",
+    "lambda",
+    "supabase",
+    "url shortener",
+    "url",
+    "rest",
+    "api"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
     "dotenv": "^16.4.5",
     "querystring": "^0.2.1",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "netlify-lambda": "^2.0.16"

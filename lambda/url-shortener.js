@@ -10,6 +10,7 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 const shortid = require("shortid");
+const validator = require("validator");
 
 // Configure shortid to generate 7-character IDs
 shortid.characters(
@@ -37,7 +38,17 @@ exports.handler = async (event) => {
         };
       }
 
-      const shortUrl = await generateShortUrl(url);
+      // URL validation using validator
+      if (!validator.isURL(url, { require_protocol: true })) {
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: "Invalid URL format" }),
+        };
+      }
+
+      let shortUrl = await generateShortUrl(url);
+
+      shortUrl = "https://frwrd.ing/" + shortUrl;
 
       return {
         statusCode: 200,
