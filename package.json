@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node ./scripts/installer.js",    
+    "prebuild": "node ./scripts/installer.js",
     "build": "echo \"Error: no build specified\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
     "dotenv": "^16.4.5",
+    "netlify-cli": "^17.23.2",
     "netlify-lambda": "^2.0.16",
+    "querystring": "^0.2.1",
     "shortid": "^2.2.16"
   }
 }

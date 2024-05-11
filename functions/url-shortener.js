@@ -5,7 +5,7 @@ if (fs.existsSync(".env")) {
 }
 
 const { createClient } = require("@supabase/supabase-js");
-
+const querystring = require("querystring");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -19,7 +19,8 @@ shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for bet
 
 exports.handler = async (event) => {
   if (event.httpMethod === "POST" && event.path === "/shorten") {
-    const { url } = JSON.parse(event.body);
+    const params = querystring.parse(event.body);
+    const url = params.url;
     // Generate a short URL (you can use a library or implement your own logic)
     const shortUrl = generateShortUrl(url);
 

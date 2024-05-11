@@ -3,18 +3,18 @@
 
 [[redirects]]
   from = "/shorten"
-  to = "/.netlify/functions/url-shortener.js"
+  to = "/.netlify/functions/url-shortener"
   status = 200
   methods = ["POST"]
 
 [[redirects]]
-  from = "/"
-  to = "/index.html"  # Redirect root URL to index.html
+  from = "/*"
+  to = "/.netlify/functions/url-shortener/:splat"
   status = 200
   methods = ["GET"]
 
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/url-shortener.js/:splat"
+  from = "/"
+  to = "/index.html"  # Redirect root URL to index.html
   status = 200
   methods = ["GET"]
