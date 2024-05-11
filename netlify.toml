@@ -1,0 +1,14 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/shorten"
+  to = "/.netlify/functions/url-shortener.js"
+  status = 200
+  methods = ["POST"]
+  
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/url-shortener.js"
+  status = 200
+  methods = ["GET"]
