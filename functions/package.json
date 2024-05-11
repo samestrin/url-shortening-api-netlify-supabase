@@ -1,11 +1,9 @@
 {
-  "name": "url-shortening-api-netlify-supabase",
+  "name": "functions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "url-shortener.js",
   "scripts": {
-    "prebuild": "node ./scripts/installer.js",
-    "build": "echo \"Error: no build specified\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,8 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
-    "dotenv": "^16.4.5",
-    "querystring": "^0.2.1",
     "shortid": "^2.2.16"
   }
 }

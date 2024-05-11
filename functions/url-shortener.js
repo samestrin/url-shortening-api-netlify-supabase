@@ -18,9 +18,6 @@ shortid.characters(
 shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for better randomness
 
 exports.handler = async (event) => {
-  console.log("HTTP Method:", event.httpMethod); // Log the method
-  console.log("Path:", event.path); // Log the full path
-
   try {
     if (event.httpMethod === "POST" && event.path === "/shorten") {
       if (!event.body) {
