@@ -1,11 +1,6 @@
 [build]
   functions = "built-lambda"
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-
 [[redirects]]
   from = "/shorten"
   to = "/.netlify/functions/url-shortener"
@@ -25,3 +20,8 @@
   to = "/index.html"  # Redirect root URL to index.html
   status = 200
   methods = ["GET"]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
