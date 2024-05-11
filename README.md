@@ -63,9 +63,8 @@ Shorten a long URL and return the shortened URL.
 ```bash
 curl -X POST \
   https://localhost/shorten \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "url": "https://www.google.com"
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'url=https://www.google.com'
 }
 ```
 
