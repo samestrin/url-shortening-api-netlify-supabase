@@ -30,7 +30,6 @@ const headers = {
 
 exports.handler = async (event) => {
   try {
-    console.log(event.httpMethod);
     // Handle OPTIONS request for preflight checks (important for CORS)
     if (event.httpMethod === "OPTIONS") {
       return {
