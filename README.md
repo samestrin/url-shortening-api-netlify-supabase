@@ -39,9 +39,10 @@ npm install dotenv @supabase/supabase-js shortid validator querystring
 npm install --save-dev netlify-lambda
 ```
 
-5.  **Configure Environment Variables**: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: `https://frwrd.ing/`).
+5.  **Setup Supabase**: Create a new project with a urls table for storage. Detailed directions are available [here](SUPABASE.md).
+6.  **Configure Environment Variables**: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: `https://frwrd.ing/`).
 
-6.  **Build Lambda**: Build your serverless functions using the `netlify-lambda` package. This will include all the Node.js dependencies.
+7.  **Build Lambda**: Build your serverless functions using the `netlify-lambda` package. This will include all the Node.js dependencies.
 
 ```bash
 npm run build:lambda
