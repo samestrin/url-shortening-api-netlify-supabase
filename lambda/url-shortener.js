@@ -26,6 +26,7 @@ const headers = {
   "Access-Control-Allow-Methods": "*",
   "Access-Control-Allow-Headers": "*",
   "Access-Control-Max-Age": "86400",
+  "Content-Type": "application/json",
 };
 
 exports.handler = async (event) => {
