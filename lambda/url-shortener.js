@@ -43,6 +43,7 @@ exports.handler = async (event) => {
       if (!event.body) {
         return {
           statusCode: 400,
+          headers,
           body: JSON.stringify({ error: "No data in request body" }),
         };
       }
@@ -53,6 +54,7 @@ exports.handler = async (event) => {
       if (!url) {
         return {
           statusCode: 400,
+          headers,
           body: JSON.stringify({ error: "No URL provided" }),
         };
       }
@@ -61,6 +63,7 @@ exports.handler = async (event) => {
       if (!validator.isURL(url, { require_protocol: true })) {
         return {
           statusCode: 400,
+          headers,
           body: JSON.stringify({ error: "Invalid URL format" }),
         };
       }
@@ -71,6 +74,7 @@ exports.handler = async (event) => {
 
       return {
         statusCode: 200,
+        headers,
         body: JSON.stringify({ shortUrl }),
       };
     } else if (event.httpMethod === "GET") {
@@ -91,6 +95,7 @@ exports.handler = async (event) => {
       if (!data) {
         return {
           statusCode: 404,
+          headers,
           body: JSON.stringify({ error: "URL not found" }),
         };
       }
@@ -105,12 +110,14 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({ error: "Method not allowed" }),
     };
   } catch (err) {
     console.error("Error in function execution", err);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({
         error: "Internal server error",
         details: err.message,
