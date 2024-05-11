@@ -8,7 +8,7 @@ Setting up Supabase for your project involves a few key steps, from creating an 
 ### **2\.** **Project Setup**
 
 - After your project is created, which might take a few minutes, you will be redirected to the project dashboard.
-- Your project’s URL (`**SUPABASE_URL**`) and anon key (`**SUPABASE_ANON_KEY**`), which are required for connecting your application to Supabase, can be found under the `**Settings**` -> `**API**` section of your Supabase project dashboard.
+- Your project’s URL (`SUPABASE_URL`) and anon key (`SUPABASE_ANON_KEY`), which are required for connecting your application to Supabase, can be found under the `Settings` -> `API` section of your Supabase project dashboard.
 
 ### **3\.** **Database Configuration**
 
