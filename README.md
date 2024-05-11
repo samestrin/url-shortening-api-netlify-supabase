@@ -2,7 +2,7 @@
 
 [![Star on GitHub](https://img.shields.io/github/stars/samestrin/url-shortening-api-netlify-supabase?style=social)](https://github.com/samestrin/url-shortening-api-netlify-supabase/stargazers)[![Fork on GitHub](https://img.shields.io/github/forks/samestrin/url-shortening-api-netlify-supabase?style=social) ](https://github.com/samestrin/url-shortening-api-netlify-supabase/network/members)[![Watch on GitHub](https://img.shields.io/github/watchers/samestrin/url-shortening-api-netlify-supabase?style=social)](https://github.com/samestrin/url-shortening-api-netlify-supabase/watchers)
 
-![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ](https://opensource.org/licenses/MIT) [![Built with Node.js](https://img.shields.io/badge/Built%20with-Node.js-green)](https://nodejs.org/)
+![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-blue)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ](https://opensource.org/licenses/MIT) [![Built with Node.js](https://img.shields.io/badge/Built%20with-Node.js-green)](https://nodejs.org/)
 
 **url-shortening-api-netlify-supabase** is a URL shortener service. It is a serverless application designed to provide both URL shortening and retrieval functionalities. Utilizing Netlify and Supabase, a cloud-based database, the application offers an efficient and scalable solution for creating short URLs that redirect to the original, longer URLs.
 
