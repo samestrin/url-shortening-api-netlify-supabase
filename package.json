@@ -12,6 +12,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
     "dotenv": "^16.4.5",
+    "netlify-lambda": "^2.0.16",
     "shortid": "^2.2.16"
   }
 }
