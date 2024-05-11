@@ -18,50 +18,78 @@ shortid.characters(
 shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for better randomness
 
 exports.handler = async (event) => {
-  if (event.httpMethod === "POST" && event.path === "/shorten") {
-    const params = querystring.parse(event.body);
-    const url = params.url;
-    // Generate a short URL (you can use a library or implement your own logic)
-    const shortUrl = generateShortUrl(url);
+  console.log("HTTP Method:", event.httpMethod); // Log the method
+  console.log("Path:", event.path); // Log the full path
 
-    // Store the URL in Supabase
-    const { data, error } = await supabase
-      .from("urls")
-      .insert([{ short_url: shortUrl, long_url: url }]);
+  try {
+    if (event.httpMethod === "POST" && event.path === "/shorten") {
+      if (!event.body) {
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: "No data in request body" }),
+        };
+      }
 
-    if (error) {
+      const params = querystring.parse(event.body);
+      const url = params.url;
+
+      if (!url) {
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: "No URL provided" }),
+        };
+      }
+
+      const shortUrl = await generateShortUrl(url);
+
       return {
-        statusCode: 500,
-        body: JSON.stringify({ error: error.message }),
+        statusCode: 200,
+        body: JSON.stringify({ shortUrl }),
+      };
+    } else if (event.httpMethod === "GET") {
+      console.log("shortUrl", event.path);
+
+      const shortUrl = event.path.replace("/", "");
+
+      const { data, error } = await supabase
+        .from("urls")
+        .select("long_url")
+        .eq("short_url", shortUrl)
+        .maybeSingle();
+
+      if (error) {
+        throw new Error("Supabase query failed");
+      }
+
+      if (!data) {
+        return {
+          statusCode: 404,
+          body: JSON.stringify({ error: "URL not found" }),
+        };
+      }
+
+      return {
+        statusCode: 301,
+        headers: {
+          Location: data.long_url,
+        },
       };
     }
 
     return {
-      statusCode: 200,
-      body: JSON.stringify({ shortUrl }),
+      statusCode: 405,
+      body: JSON.stringify({ error: "Method not allowed" }),
     };
-  }
-
-  // Catch-all route for redirecting to the long URL
-  const { data, error } = await supabase
-    .from("urls")
-    .select("long_url")
-    .eq("short_url", event.path.replace("/", ""))
-    .single();
-
-  if (error) {
+  } catch (err) {
+    console.error("Error in function execution", err);
     return {
-      statusCode: 404,
-      body: JSON.stringify({ error: "URL not found" }),
+      statusCode: 500,
+      body: JSON.stringify({
+        error: "Internal server error",
+        details: err.message,
+      }),
     };
   }
-
-  return {
-    statusCode: 301,
-    headers: {
-      Location: data.long_url,
-    },
-  };
 };
 
 async function generateShortUrl() {
@@ -77,11 +105,11 @@ async function generateShortUrl() {
       .from("urls")
       .select("short_url")
       .eq("short_url", shortUrl)
-      .single();
+      .maybeSingle();
 
     if (error) {
       console.error("Error checking for collision:", error);
-      //throw error;
+      throw error;
     }
 
     // If no data is returned, it means the short URL is unique
@@ -91,14 +119,14 @@ async function generateShortUrl() {
   return shortUrl;
 }
 async function generateShortUrl(longUrl) {
-  let shortUrl;
+  let shortUrl, data, error;
 
   // Check if the long URL already exists in the database
-  const { data, error } = await supabase
+  ({ data, error } = await supabase
     .from("urls")
     .select("short_url")
     .eq("long_url", longUrl)
-    .single();
+    .maybeSingle());
 
   if (error) {
     console.error("Error checking for existing long URL:", error);
@@ -122,7 +150,7 @@ async function generateShortUrl(longUrl) {
       .from("urls")
       .select("short_url")
       .eq("short_url", shortUrl)
-      .single();
+      .maybeSingle();
 
     if (error) {
       console.error("Error checking for collision:", error);
@@ -131,6 +159,15 @@ async function generateShortUrl(longUrl) {
 
     // If no data is returned, it means the short URL is unique
     isCollision = !!data;
+  }
+
+  ({ data, error } = await supabase
+    .from("urls")
+    .insert([{ short_url: shortUrl, long_url: longUrl }]));
+
+  if (error) {
+    console.error("Error checking for collision:", error);
+    throw error;
   }
 
   return shortUrl;

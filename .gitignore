@@ -130,4 +130,8 @@ dist
 .pnp.*
 
 # Local Netlify folder
+
 .netlify
+cache
+.env
+node_modules
