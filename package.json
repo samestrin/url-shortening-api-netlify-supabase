@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node ./scripts/installer.js",
-    "build": "echo \"Error: no build specified\"",
+    "build:lambda": "netlify-lambda build lambda",
+    "serve:lambda": "netlify-lambda serve lambda",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,5 +16,8 @@
     "dotenv": "^16.4.5",
     "querystring": "^0.2.1",
     "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.16"
   }
 }
