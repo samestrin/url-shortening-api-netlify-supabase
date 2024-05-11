@@ -55,9 +55,9 @@ Build Lambda: Build your serverless functions using the `netlify-lambda` package
 npm run build:lambda
 ```
 
-## **Setup Supabase**
+## **Supabase Setup**
 
-Setup Supabase: Create a new project with a `urls` table for storage. Detailed directions are available [here](SUPABASE.md).
+Setup Your Supabase Database: Create a new project with a `urls` table for storage. Detailed directions are available [here](SUPABASE.md).
 
 ## **Deploy and Test**
 
