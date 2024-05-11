@@ -29,7 +29,6 @@ const headers = {
 };
 
 exports.handler = async (event) => {
-  console.log(event);
   try {
     // Handle OPTIONS request for preflight checks (important for CORS)
     if (event.httpMethod === "OPTIONS") {
@@ -51,7 +50,7 @@ exports.handler = async (event) => {
 
       const params = querystring.parse(event.body);
       const url = params.url;
-
+      console.log(params);
       if (!url) {
         return {
           statusCode: 400,
