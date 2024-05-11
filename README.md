@@ -18,7 +18,7 @@
 
 - **Node.js**: The runtime environment for the serverless function.
 - **Supabase**: A cloud-hosted database that stores URL mappings.
-- **Dotenv**: A module for loading environment variables from a `**.env**` file.
+- **Dotenv**: A module for loading environment variables from a `.env` file.
 - **Shortid**: Generates short, unique identifiers for URLs.
 - **Validator**: Validates URLs to ensure they include the required protocol.
 - **Querystring**: For parsing the body of POST requests.
@@ -39,7 +39,7 @@ npm install dotenv @supabase/supabase-js shortid validator querystring
 npm install --save-dev netlify-lambda
 ```
 
-5.  **Configure Environment Variables**: Create a `**.env**` file in the project root and define `**SUPABASE_URL**` and `**SUPABASE_ANON_KEY**` with your Supabase project credentials. Optionally set `**URL_BASE**` to your hostname (example: `https://frwrd.ing/`).
+5.  **Configure Environment Variables**: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: `https://frwrd.ing/`).
 
 6.  **Build Lambda**: Build your serverless functions using the `netlify-lambda` package. This will include all the Node.js dependencies.
 
@@ -59,25 +59,26 @@ Shorten a long URL and return the shortened URL.
 
 - `url`: The URL to be shortened.
 
-````bash
+```bash
 curl -X POST \
   https://localhost/shorten \
   -H 'Content-Type: application/json' \
   -d '{
   "url": "https://www.google.com"
-}```
+}
+```
 
-The server responsds with:
+The server responds with:
 
 ```bash
-{"shortUrl":"https://frwrd.ing/lqywv6P"}
-````
+{"shortUrl":"lqywv6P"}
+```
 
 ### Retrieve URL
 
 **Endpoint:** `/[shortId]` **Method:** GET
 
-Retrieve the original URL from a shortened URL.
+Retrieve the original URL from a shortened URL, e.g. `/lqywv6P`.
 
 This endpoint is accessed by navigating directly to the shortened URL.
 
