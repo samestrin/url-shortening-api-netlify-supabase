@@ -65,7 +65,6 @@ curl -X POST \
   https://localhost/shorten \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'url=https://www.google.com'
-}
 ```
 
 The server responds with:
