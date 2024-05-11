@@ -4,7 +4,7 @@
 
 ![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-blue) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ](https://opensource.org/licenses/MIT)[![Built with Python](https://img.shields.io/badge/Built%20with-Python-green)](https://www.python.org/)
 
-**url-shortening-api-netlify-supabase** is a URL shortener service. It is a serverless application designed to provide both URL shortening and retrieval functionalities. Utilizing Netlify Functions and cloud-based database (Supabase), the application offers an efficient and scalable solution for creating short URLs that redirect to the original, longer URLs.
+**url-shortening-api-netlify-supabase** is a URL shortener service. It is a serverless application designed to provide both URL shortening and retrieval functionalities. Utilizing Netlify and Supabase, a cloud-based database, the application offers an efficient and scalable solution for creating short URLs that redirect to the original, longer URLs.
 
 ### **Features**
 
