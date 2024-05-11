@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node ./scripts/installer.js",
-    "build": "echo \"Error: no build specified\" && exit 1",
+    "prebuild": "node ./scripts/installer.js",    
+    "build": "echo \"Error: no build specified\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
