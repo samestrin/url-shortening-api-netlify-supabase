@@ -51,7 +51,7 @@ exports.handler = async (event) => {
 
       const params = querystring.parse(event.body);
       const url = params.url;
-      console.log(params);
+
       if (!url) {
         return {
           statusCode: 400,
