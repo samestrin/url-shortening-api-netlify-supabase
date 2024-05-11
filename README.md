@@ -1,1 +1,1 @@
-# url-shortening-api-digitalocean
+# url-shortening-api-netlify-supabase
