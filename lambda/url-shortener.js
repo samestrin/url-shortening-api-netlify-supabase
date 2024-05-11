@@ -12,6 +12,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const shortid = require("shortid");
 const validator = require("validator");
 
+// Configure URL Base
+const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "/";
+
 // Configure shortid to generate 7-character IDs
 shortid.characters(
   "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_"
@@ -48,7 +51,7 @@ exports.handler = async (event) => {
 
       let shortUrl = await generateShortUrl(url);
 
-      shortUrl = "https://frwrd.ing/" + shortUrl;
+      shortUrl = urlBase + shortUrl;
 
       return {
         statusCode: 200,
