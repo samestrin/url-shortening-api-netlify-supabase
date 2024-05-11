@@ -1,6 +1,6 @@
 # url-shortening-api-netlify-supabase
 
-## Setup Supabase
+## Supabase Setup
 
 Setting up Supabase for your project involves a few key steps, from creating an account to initializing your database and integrating it with your application. Here’s a detailed walkthrough:
 
