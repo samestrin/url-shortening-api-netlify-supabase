@@ -23,6 +23,21 @@ shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for bet
 
 exports.handler = async (event) => {
   try {
+    const headers = {
+      "Access-Control-Allow-Origin": "*", // Allows all domains
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    };
+
+    // Handle OPTIONS request for preflight checks (important for CORS)
+    if (event.httpMethod === "OPTIONS") {
+      return {
+        statusCode: 204,
+        headers,
+        body: "",
+      };
+    }
+
     if (event.httpMethod === "POST" && event.path === "/shorten") {
       if (!event.body) {
         return {
