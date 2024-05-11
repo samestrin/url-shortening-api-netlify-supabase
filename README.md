@@ -81,6 +81,25 @@ Retrieve the original URL from a shortened URL, e.g. `/lqywv6P`.
 
 This endpoint is accessed by navigating directly to the shortened URL.
 
+### **CORS Pre-flight Request**
+
+**Endpoint:** `/`  
+**Method:** OPTIONS
+
+Handle pre-flight requests for CORS (Cross-Origin Resource Sharing). This endpoint provides necessary headers in response to pre-flight checks performed by browsers to ensure that the server accepts requests from allowed origins.
+
+#### **Example Usage**
+
+This is typically used by browsers automatically before sending actual requests, but you can manually test CORS settings using curl:
+
+```bash
+curl -X OPTIONS http://localhost/ \
+-H "Access-Control-Request-Method: POST" \
+-H "Origin: http://example.com"
+```
+
+The server responds with appropriate CORS headers such as Access-Control-Allow-Origin.
+
 ## Error Handling
 
 The API handles errors gracefully and returns appropriate error responses:
