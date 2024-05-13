@@ -7,14 +7,6 @@
   status = 200
   methods = ["POST"]
 
-[[edge_functions]]
-  path = "/latest-edge"
-  function = "/.netlify/edge-functions/latest-edge"
-
-[[edge_functions]]
-  path = "/count-edge"
-  function = "/.netlify/edge-functions/count-edge"
-
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/url-shortener/:splat"
