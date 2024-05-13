@@ -1,5 +1,5 @@
 [build]
-  functions = "lambda"
+  functions = "built-lambda"
 
 [[redirects]]
   from = "/shorten"
