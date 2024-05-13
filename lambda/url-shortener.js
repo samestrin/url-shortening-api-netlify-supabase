@@ -4,12 +4,14 @@ if (fs.existsSync(".env")) {
   require("dotenv").config();
 }
 
+import { customAlphabet } from "nanoid";
+
 const { createClient } = require("@supabase/supabase-js");
 const querystring = require("querystring");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
-const { customAlphabet } = require("nanoid");
+
 const validator = require("validator");
 
 // Configure URL Base
