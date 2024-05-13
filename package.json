@@ -4,7 +4,7 @@
   "description": "",
   "main": "functions/url-shortener/index.js",
   "scripts": {
-    "build:lambda": "netlify-lambda build lambda",
+    "build:lambda": "NODE_OPTIONS=--openssl-legacy-provider netlify-lambda build lambda",
     "serve:lambda": "netlify-lambda serve lambda",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,9 +22,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
     "dotenv": "^16.4.5",
-    "nanoid": "^5.0.7",
     "netlify-lambda": "^2.0.16",
     "querystring": "^0.2.1",
+    "uuid": "^9.0.1",
     "validator": "^13.12.0"
   }
 }

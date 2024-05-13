@@ -1,5 +1,10 @@
 [build]
+  publish = "public"
   functions = "built-lambda"
+
+[build.environment]
+  # Environment variables are set here
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/shorten"
