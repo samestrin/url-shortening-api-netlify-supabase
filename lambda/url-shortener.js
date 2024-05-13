@@ -1,4 +1,9 @@
-require("dotenv").config();
+const fs = require("fs");
+
+if (fs.existsSync(".env")) {
+  require("dotenv").config();
+}
+
 const { createClient } = require("@supabase/supabase-js");
 const querystring = require("querystring");
 const supabaseUrl = process.env.SUPABASE_URL;
