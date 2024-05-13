@@ -7,6 +7,14 @@
   status = 200
   methods = ["POST"]
 
+[[edge_functions]]
+  path = "/latest-edge"
+  function = "latest-edge"
+
+[[edge_functions]]
+  path = "/count-edge"
+  function = "count-edge"
+
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/url-shortener/:splat"
@@ -18,3 +26,5 @@
   to = "/index.html"  # Redirect root URL to index.html
   status = 200
   methods = ["GET"]
+
+  

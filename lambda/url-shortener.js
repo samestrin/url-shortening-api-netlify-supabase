@@ -1,25 +1,20 @@
-const fs = require("fs");
-
-if (fs.existsSync(".env")) {
-  require("dotenv").config();
-}
-
+require("dotenv").config();
 const { createClient } = require("@supabase/supabase-js");
 const querystring = require("querystring");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
-const shortid = require("shortid");
+const { customAlphabet } = require("nanoid");
 const validator = require("validator");
 
 // Configure URL Base
 const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 
-// Configure shortid to generate 7-character IDs
-shortid.characters(
-  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_"
+// Configure nanoid to generate 7-character IDs
+const nanoid = customAlphabet(
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_",
+  7
 );
-shortid.seed(Math.random().toString(36).slice(2)); // Seed the generator for better randomness
 
 const headers = {
   "Access-Control-Allow-Origin": "*", // Allows all domains
@@ -70,7 +65,6 @@ exports.handler = async (event) => {
       }
 
       let shortUrl = await generateShortUrl(url);
-
       shortUrl = urlBase + shortUrl;
 
       return {
@@ -79,8 +73,42 @@ exports.handler = async (event) => {
         body: JSON.stringify({ shortUrl }),
       };
     } else if (event.httpMethod === "GET") {
-      console.log("shortUrl", event.path);
+      if (event.path === "/count") {
+        // New endpoint to get the count of records
+        const { data, error, count } = await supabase
+          .from("urls")
+          .select("id", { count: "exact" });
 
+        if (error) {
+          throw new Error("Failed to retrieve count");
+        }
+
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({ count }),
+        };
+      } else if (event.path === "/latest") {
+        // New endpoint to get the latest N shortened URLs
+        const count = event.queryStringParameters.count || 10;
+        const { results, error } = await supabase
+          .from("urls")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(count);
+
+        if (error) {
+          throw new Error("Failed to retrieve latest URLs");
+        }
+
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify(results),
+        };
+      }
+
+      console.log("shortUrl", event.path);
       const shortUrl = event.path.replace("/", "");
 
       const { data, error } = await supabase
@@ -151,15 +179,15 @@ async function generateShortUrl(longUrl) {
   let isCollision = true;
 
   while (isCollision) {
-    // Generate a unique 7-character short ID using shortid
-    shortUrl = shortid.generate().slice(0, 7);
+    // Generate a unique 7-character short ID using nanoid
+    shortUrl = nanoid();
 
     // Check if the generated short URL already exists in the database
-    const { data, error } = await supabase
+    ({ data, error } = await supabase
       .from("urls")
       .select("short_url")
       .eq("short_url", shortUrl)
-      .maybeSingle();
+      .maybeSingle());
 
     if (error) {
       console.error("Error checking for collision:", error);
@@ -175,7 +203,7 @@ async function generateShortUrl(longUrl) {
     .insert([{ short_url: shortUrl, long_url: longUrl }]));
 
   if (error) {
-    console.error("Error checking for collision:", error);
+    console.error("Error inserting new URL:", error);
     throw error;
   }
 

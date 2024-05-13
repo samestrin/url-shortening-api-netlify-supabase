@@ -19,7 +19,7 @@
 - **Node.js**: The runtime environment for the serverless function.
 - **Supabase**: A cloud-hosted database that stores URL mappings.
 - **Dotenv**: A module for loading environment variables from a `.env` file.
-- **Shortid**: Generates short, unique identifiers for URLs.
+- **Nanoid**: Generates short, unique identifiers for URLs.
 - **Validator**: Validates URLs to ensure they include the required protocol.
 - **Querystring**: For parsing the body of POST requests.
 
