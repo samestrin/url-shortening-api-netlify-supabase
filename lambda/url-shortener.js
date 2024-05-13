@@ -4,8 +4,6 @@ if (fs.existsSync(".env")) {
   require("dotenv").config();
 }
 
-import { customAlphabet } from "nanoid";
-
 const { createClient } = require("@supabase/supabase-js");
 const querystring = require("querystring");
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -16,12 +14,6 @@ const validator = require("validator");
 
 // Configure URL Base
 const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
-
-// Configure nanoid to generate 7-character IDs
-const nanoid = customAlphabet(
-  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_",
-  7
-);
 
 const headers = {
   "Access-Control-Allow-Origin": "*", // Allows all domains
@@ -187,7 +179,7 @@ async function generateShortUrl(longUrl) {
 
   while (isCollision) {
     // Generate a unique 7-character short ID using nanoid
-    shortUrl = nanoid();
+    shortUrl = await generateNanoid();
 
     // Check if the generated short URL already exists in the database
     ({ data, error } = await supabase
@@ -215,4 +207,25 @@ async function generateShortUrl(longUrl) {
   }
 
   return shortUrl;
+}
+
+async function generateNanoid() {
+  try {
+    // Dynamically import the nanoid module
+    const { customAlphabet } = await import("nanoid");
+
+    // Define the alphabet and the ID length
+    const alphabet =
+      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const length = 7;
+
+    // Create a nanoid generator
+    const nanoid = customAlphabet(alphabet, length);
+
+    // Generate and return the nanoid
+    return nanoid();
+  } catch (error) {
+    console.error("Failed to load nanoid module:", error);
+    return null;
+  }
 }
