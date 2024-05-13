@@ -179,7 +179,7 @@ async function generateShortUrl(longUrl) {
 
   while (isCollision) {
     // Generate a unique 7-character short ID using nanoid
-    shortUrl = await generateNanoid();
+    shortUrl = generateUuidShort();
 
     // Check if the generated short URL already exists in the database
     ({ data, error } = await supabase
@@ -209,23 +209,12 @@ async function generateShortUrl(longUrl) {
   return shortUrl;
 }
 
-async function generateNanoid() {
+function generateUuidShort() {
   try {
-    // Dynamically import the nanoid module
-    const { customAlphabet } = await import("nanoid");
-
-    // Define the alphabet and the ID length
-    const alphabet =
-      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const length = 7;
-
-    // Create a nanoid generator
-    const nanoid = customAlphabet(alphabet, length);
-
-    // Generate and return the nanoid
-    return nanoid();
+    let uuid = crypto.randomUUID().substring(0, 7);
+    return uuid;
   } catch (error) {
-    console.error("Failed to load nanoid module:", error);
+    console.error("Failed to generate UUID:", error);
     return null;
   }
 }
