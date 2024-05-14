@@ -31,4 +31,17 @@
   methods = ["GET"]
 
 
-  
+[[redirects]]
+  from = "/api/shorten"
+  to = "/.netlify/functions/shorten"
+  status = 200
+
+[[redirects]]
+  from = "/api/count"
+  to = "/.netlify/functions/count"
+  status = 200
+
+[[redirects]]
+  from = "/api/latest"
+  to = "/.netlify/functions/latest"
+  status = 200
