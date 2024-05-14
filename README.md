@@ -4,6 +4,8 @@
 
 ![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-blue)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![Built with Node.js](https://img.shields.io/badge/Built%20with-Node.js-green)](https://nodejs.org/)
 
+**This has been depreciated. Please use [url-shortening-api-netlify-edge-superbase](https://github.com/samestrin/url-shortening-api-netlify-edge-supabase) instead.**
+
 **url-shortening-api-netlify-supabase** is a URL shortener service. It is a serverless application that provides URL shortening and retrieval functionalities. Utilizing Netlify and Supabase, a cloud-based database, the application offers an efficient and scalable solution for creating short URLs that redirect to the original, longer URLs.
 
 ### **Features**
