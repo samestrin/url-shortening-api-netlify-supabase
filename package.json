@@ -2,7 +2,7 @@
   "name": "url-shortening-api-netlify-supabase",
   "version": "0.0.1",
   "description": "",
-  "main": "functions/url-shortener/index.js",
+  "main": "public/index.html",
   "scripts": {
     "build:lambda": "NODE_OPTIONS=--openssl-legacy-provider netlify-lambda build lambda",
     "serve:lambda": "netlify-lambda serve lambda",

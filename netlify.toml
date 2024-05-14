@@ -24,11 +24,30 @@
   status = 200
   methods = ["GET"]
 
+
+[[redirects]]
+  from = "/api/shorten"
+  to = "/.netlify/functions/shorten"
+  status = 200
+
+[[redirects]]
+  from = "/api/count"
+  to = "/.netlify/functions/count"
+  status = 200
+
+[[redirects]]
+  from = "/api/latest"
+  to = "/.netlify/functions/latest"
+  status = 200
+
+[[redirects]]
+  from = "/api/:shortUrl"
+  to = "/.netlify/functions/redirect"
+  status = 200
+
+
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/url-shortener/:splat"
   status = 200
   methods = ["GET"]
-
-
-  
