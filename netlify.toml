@@ -25,6 +25,6 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/shorten/:splat"
+  to = "/.netlify/functions/redirect/:splat"
   status = 200
   methods = ["GET"]
