@@ -135,4 +135,3 @@ dist
 cache
 .env
 node_modules
-built-lambda
