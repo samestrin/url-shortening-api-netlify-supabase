@@ -24,11 +24,6 @@
   status = 200
   methods = ["GET"]
 
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/url-shortener/:splat"
-  status = 200
-  methods = ["GET"]
 
 
 [[redirects]]
@@ -44,4 +39,9 @@
 [[redirects]]
   from = "/api/latest"
   to = "/.netlify/functions/latest"
+  status = 200
+
+  [[redirects]]
+  from = "/:shortUrl"
+  to = "/.netlify/functions/redirect"
   status = 200
