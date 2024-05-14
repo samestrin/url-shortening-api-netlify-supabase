@@ -2,6 +2,8 @@ const querystring = require("querystring");
 const validator = require("validator");
 const headers = require("./headers");
 const { generateShortUrl } = require("./utils");
+const { supabase } = require("./supabase-client");
+
 const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 
 exports.handler = async (event) => {
@@ -33,8 +35,7 @@ exports.handler = async (event) => {
       };
     }
 
-    let shortUrl = await generateShortUrl(url);
-    shortUrl = urlBase + shortUrl;
+    let shortUrl = urlBase + (await generateShortUrl(url));
 
     return {
       statusCode: 200,
