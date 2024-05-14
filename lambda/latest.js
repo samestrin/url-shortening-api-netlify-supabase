@@ -1,8 +1,17 @@
 const headers = require("./headers");
 const { supabase } = require("./supabase-client");
 const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
-// Log the URL_BASE to ensure it's being read correctly
 
+/**
+ * Retrieves the latest shortened URLs from the database and returns them in the response.
+ *
+ * @param event - The event object containing the request data.
+ * @returns A response object with the latest shortened URLs or an error message.
+ *
+ * @example
+ * // Example usage with curl
+ * curl https://your-lambda-url/latest
+ */
 exports.handler = async (event) => {
   try {
     const count = event.queryStringParameters.count || 10;

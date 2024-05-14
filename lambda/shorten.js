@@ -6,6 +6,17 @@ const { supabase } = require("./supabase-client");
 
 const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 
+/**
+ * Handles the shortening of a long URL by generating a short URL and returning it in the response.
+ * Validates the URL format and checks if the URL already exists in the database.
+ *
+ * @param event - The event object containing the request data.
+ * @returns A response object with the short URL or an error message.
+ *
+ * @example
+ * // Example usage with curl
+ * curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'url=https://example.com' https://your-lambda-url/shorten
+ */
 exports.handler = async (event) => {
   try {
     if (!event.body) {
