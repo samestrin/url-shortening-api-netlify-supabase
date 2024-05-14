@@ -31,25 +31,25 @@ Before installing, ensure you have Node.js and npm (Node Package Manager) instal
 
 To install and use url-shortening-api-netlify-supabase, follow these steps:
 
-Clone the Repository: Begin by cloning the repository containing the url-shortening-api-netlify-supabase to your local machine.
+1. Clone the Repository: Begin by cloning the repository containing the url-shortening-api-netlify-supabase to your local machine.
 
 ```bash
 git clone https://github.com/samestrin/url-shortening-api-netlify-supabase/
 ```
 
-Install Dependencies:
+2. Install Dependencies:
 
 ```bash
 npm install dotenv @supabase/supabase-js shortid validator querystring
 ```
 
-Install Development Dependencies:
+3. Install Development Dependencies:
 
 ```bash
 npm install --save-dev netlify-lambda
 ```
 
-Build Lambda: Build your serverless functions using the `netlify-lambda` package. This will include all the Node.js dependencies.
+4. Build Lambda: Build your serverless functions using the `netlify-lambda` package. This will include all the Node.js dependencies.
 
 ```bash
 npm run build:lambda
@@ -57,15 +57,15 @@ npm run build:lambda
 
 ## **Supabase Setup**
 
-Setup Your Supabase Database: Create a new project with a `urls` table for storage. Detailed directions are available [here](SUPABASE.md).
+1. Setup Your Supabase Database: Create a new project with a `urls` table for storage. Detailed directions are available [here](SUPABASE.md).
 
 ## **Deploy and Test**
 
-Deploy: Deploy to Netlify.
+1. Deploy: Deploy to Netlify.
 
 Configure Environment Variables: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: https://frwrd.ing/).
 
-Test: Visit the root of your deployment. You should be greeted with "Nothing to see here.".
+2. Test: Visit /count to see the number of URLs stored in your database.
 
 ## Endpoints
 
