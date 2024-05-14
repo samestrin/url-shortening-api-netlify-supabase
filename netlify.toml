@@ -6,42 +6,24 @@
   # Environment variables are set here
   NODE_VERSION = "20"
 
+
 [[redirects]]
   from = "/shorten"
-  to = "/.netlify/functions/url-shortener"
-  status = 200
-  methods = ["POST"]
-
-[[redirects]]
-  from = "/count"
-  to = "/.netlify/functions/url-shortener"
-  status = 200
-  methods = ["GET"]
-
-[[redirects]]
-  from = "/latest"
-  to = "/.netlify/functions/url-shortener"
-  status = 200
-  methods = ["GET"]
-
-
-[[redirects]]
-  from = "/api/shorten"
   to = "/.netlify/functions/shorten"
   status = 200
 
 [[redirects]]
-  from = "/api/count"
+  from = "/count"
   to = "/.netlify/functions/count"
   status = 200
 
 [[redirects]]
-  from = "/api/latest"
+  from = "/latest"
   to = "/.netlify/functions/latest"
   status = 200
 
 [[redirects]]
-  from = "/api/:shortUrl"
+  from = "/:shortUrl"
   to = "/.netlify/functions/redirect"
   status = 200
 
