@@ -1,6 +1,6 @@
 const headers = require("./headers");
 const { supabase } = require("./supabase-client");
-const urlBase = process.env.URL_BASE ? process.env.URL_BASE || "";
+const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 exports.handler = async (event) => {
   try {
     const count = event.queryStringParameters.count || 10;
