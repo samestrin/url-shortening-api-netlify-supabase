@@ -123,7 +123,7 @@ This endpoint is accessed by navigating directly to /latest.
 Use curl to make a request:
 
 ```bash
-curl http://localhost/count
+curl http://localhost/latest
 ```
 
 ### Retrieve Count
