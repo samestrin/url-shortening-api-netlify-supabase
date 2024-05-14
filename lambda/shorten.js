@@ -13,7 +13,8 @@ exports.handler = async (event) => {
         body: JSON.stringify({ error: "No data in request body" }),
       };
     }
-    console.log(event.body);
+
+    // Parse the body as URL-encoded string
     const params = querystring.parse(event.body);
     const url = params.url;
 

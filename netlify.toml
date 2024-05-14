@@ -6,7 +6,6 @@
   # Environment variables are set here
   NODE_VERSION = "20"
 
-
 [[redirects]]
   from = "/shorten"
   to = "/.netlify/functions/shorten"
@@ -22,9 +21,14 @@
   to = "/.netlify/functions/latest"
   status = 200
 
-
 [[redirects]]
   from = "/*"
+  to = "/.netlify/functions/redirect/:splat"
+  status = 200
+  methods = ["GET"]
+
+[[redirects]]
+  from = "/"
   to = "/.netlify/functions/redirect/:splat"
   status = 200
   methods = ["GET"]
