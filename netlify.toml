@@ -32,3 +32,4 @@
   to = "/.netlify/functions/redirect/:splat"
   status = 200
   methods = ["GET"]
+
