@@ -90,7 +90,7 @@ exports.handler = async (event) => {
       } else if (event.path === "/latest") {
         // New endpoint to get the latest N shortened URLs
         const count = event.queryStringParameters.count || 10;
-        const { results, error } = await supabase
+        const { data: results, error } = await supabase
           .from("urls")
           .select("*")
           .order("created_at", { ascending: false })
