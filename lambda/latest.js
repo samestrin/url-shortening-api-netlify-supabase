@@ -1,5 +1,6 @@
 const headers = require("./headers");
 const { supabase } = require("./supabase-client");
+const urlBase = process.env.URL_BASE ? process.env.URL_BASE : "";
 
 exports.handler = async (event) => {
   try {
@@ -14,10 +15,15 @@ exports.handler = async (event) => {
       throw new Error("Failed to retrieve latest URLs");
     }
 
+    const updatedResults = results.map((item) => ({
+      ...item,
+      short_url: urlBase + item.short_url,
+    }));
+
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(results),
+      body: JSON.stringify(updatedResults),
     };
   } catch (err) {
     console.error("Error in function execution", err);
