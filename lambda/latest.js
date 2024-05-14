@@ -14,10 +14,15 @@ exports.handler = async (event) => {
       throw new Error("Failed to retrieve latest URLs");
     }
 
+    const modifiedResults = results.map((item) => ({
+      ...item,
+      short_url: `${urlBase}${item.short_url}`,
+    }));
+
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify(results),
+      body: JSON.stringify(modifiedResults),
     };
   } catch (err) {
     console.error("Error in function execution", err);
