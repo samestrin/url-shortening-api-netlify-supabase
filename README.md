@@ -94,11 +94,11 @@ The server responds with:
 {"shortUrl":"lqywv6P"}
 ```
 
-### Retrieve URL
+### Forward URL
 
 **Endpoint:** `/[shortId]` **Method:** GET
 
-Retrieve the original URL from a shortened URL, e.g. `/lqywv6P`.
+Based on shortened URL, e.g. `/lqywv6P` HTTP 301 forward to a long url.
 
 This endpoint is accessed by navigating directly to the shortened URL.
 
@@ -108,6 +108,38 @@ Use curl to make a request:
 
 ```bash
 curl http://localhost/[shortId]
+```
+
+### Retrieve Latest Shortened Links
+
+**Endpoint:** `/latest` **Method:** GET
+
+Retrieve the latest URLs shortened.
+
+This endpoint is accessed by navigating directly to /latest.
+
+#### **Example Usage**
+
+Use curl to make a request:
+
+```bash
+curl http://localhost/count
+```
+
+### Retrieve Count
+
+**Endpoint:** `/count` **Method:** GET
+
+Retrieve the number of URLs shortened.
+
+This endpoint is accessed by navigating directly to /count.
+
+#### **Example Usage**
+
+Use curl to make a request:
+
+```bash
+curl http://localhost/count
 ```
 
 ### **CORS Pre-flight Request**
