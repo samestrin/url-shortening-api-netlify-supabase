@@ -61,9 +61,7 @@ npm run build:lambda
 
 ## **Deploy and Test**
 
-1. Deploy: Deploy to Netlify.
-
-Configure Environment Variables: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: https://frwrd.ing/).
+1. Deploy: Deploy to Netlify.<br/><br/>Configure Environment Variables: Create a `.env` file in the project root and define `SUPABASE_URL` and `SUPABASE_ANON_KEY` with your Supabase project credentials. Optionally set `URL_BASE` to your hostname (example: https://frwrd.ing/).
 
 2. Test: Visit /count to see the number of URLs stored in your database.
 
